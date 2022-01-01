@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Moodle</string>
+
+    <string name="fragment_welcome_screen_title">Hey Yizhak</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <!--  bottom navigation  -->
+    <string name="home_fragment">home</string>
+    <string name="notification_fragment">notification</string>
+    <string name="setting_fragment">setting</string>
+
+
+</resources>
