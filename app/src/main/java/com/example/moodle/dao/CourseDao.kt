@@ -13,8 +13,8 @@ internal interface CourseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCourse(course: Course)
 
-    //@Query("SELECT * FROM favorites ORDER By timeStampAdded DESC")
-    //fun getFavoriteCourses(): Flow<List<Course>>
+//    @Query("SELECT * FROM favorites ORDER By timeStampAdded DESC")
+//    fun getFavoriteCourses(): Flow<List<Course>>
 
     @Query("SELECT * FROM Course")
     fun getAllCourses(): Flow<List<Course>>
