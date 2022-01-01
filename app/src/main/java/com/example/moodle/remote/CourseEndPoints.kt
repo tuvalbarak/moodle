@@ -12,6 +12,7 @@ interface CourseEndPoints {
         @Query("courses") courses: Course // just as example
     ) : Response<List<CourseResponse>>
 
+
     //example
 //    @POST("/createCourse")
 //    suspend fun createCourse(
