@@ -6,10 +6,17 @@ import kotlinx.coroutines.flow.Flow
 
 interface CourseRepo {
     suspend fun getAllCourses(): Flow<List<Course>>
+    suspend fun insertCourse(course: Course)
 }
+
+
 
 internal object CourseRepoImpl : CourseRepo {
     override suspend fun getAllCourses(): Flow<List<Course>> =
         AppDatabase.instance().courseDao.getAllCourses()
+
+    override suspend fun insertCourse(course: Course) {
+        AppDatabase.instance().courseDao.insertCourse(course)
+    }
 
 }

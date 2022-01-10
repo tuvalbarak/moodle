@@ -9,7 +9,7 @@ import com.example.moodle.repos.RepoFactory
 /**
 * Using Factory design pattern for a scalable solution to VM approach
  */
-object ViewmodelFactory {
+object ViewModelFactory {
     fun create(context: Context) : ViewModelProvider.AndroidViewModelFactory =
         ViewModelFactoryImpl(context.applicationContext as Application)
 }

@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moodle.R
 import com.example.moodle.models.Course
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.holder_course.*
-import kotlinx.android.synthetic.main.holder_course.view.*
+import kotlinx.android.synthetic.main.item_course.*
+import kotlinx.android.synthetic.main.item_course.view.*
 
 class CourseAdapter(private val onCourseClickListener: (course: Course) -> Unit) : ListAdapter<Course, CourseAdapter.CourseViewHolder>(CourseDiffCallback()) {
 
@@ -26,14 +26,14 @@ class CourseAdapter(private val onCourseClickListener: (course: Course) -> Unit)
             }
         }
         fun bind(course: Course) {
-                holder_course_title.text = course.courseName
+            item_course_tv_title.text = course.courseName
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourseViewHolder =
         CourseViewHolder(
             LayoutInflater.from(parent.context).
-                inflate(R.layout.holder_course, parent, false)
+                inflate(R.layout.item_course, parent, false)
         ) {
             onCourseClickListener(getItem(it))
         }

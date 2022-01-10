@@ -9,5 +9,10 @@
     <string name="notification_fragment">notification</string>
     <string name="setting_fragment">setting</string>
 
+    <!--  home fragment  -->
+    <string name="assignments_title">Assignments</string>
+    <string name="courses_title">Courses</string>
+
+
 
 </resources>
