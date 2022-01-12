@@ -12,4 +12,6 @@
     <color name="primary_color">#FF03DAC5</color>
     <color name="secondary_color">#FF018786</color>
     <color name="black_text_color">#FF000000</color>
+    <color name="hint">#DEDEDE</color>
+    <color name="error_or_delete">#FF2727</color>
 </resources>

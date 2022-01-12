@@ -4,8 +4,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.moodle.dao.AssignmentDao
 import com.example.moodle.dao.CourseDao
+import com.example.moodle.models.Converters
 import com.example.moodle.models.Course
+import com.example.moodle.models.HomeAssignment
 import com.example.moodle.repos.RepoFactory
 
 private const val DB_NAME = "moodle"
@@ -15,10 +19,13 @@ private const val DB_NAME = "moodle"
  */
 
 @Database(entities = [
-    Course::class
+    Course::class,
+    HomeAssignment::class
 ], version = 1)
+@TypeConverters(Converters::class)
 internal abstract class AppDatabase : RoomDatabase() {
     abstract val courseDao: CourseDao
+    abstract val assignmentDao: AssignmentDao
 
     companion object {
         var dbInstance: AppDatabase? = null

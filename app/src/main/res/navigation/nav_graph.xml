@@ -11,6 +11,42 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
 
+        <action
+            android:id="@+id/navGraph_action_single_course_fragment"
+            app:destination="@+id/navGraph_single_course_fragment" />
+
+        <action
+            android:id="@+id/navGraph_action_single_assignment_fragment"
+            app:destination="@+id/navGraph_single_assignment_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navGraph_single_course_fragment"
+        android:name="com.example.moodle.ui.fragments.SingleCourseFragment"
+        android:label="fragment_single_course"
+        tools:layout="@layout/fragment_single_course">
+
+        <argument
+            android:name="course"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="com.example.moodle.models.Course" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navGraph_single_assignment_fragment"
+        android:name="com.example.moodle.ui.fragments.SingleAssignmentFragment"
+        android:label="fragment_single_assignment"
+        tools:layout="@layout/fragment_single_assignment">
+
+        <argument
+            android:name="assignment"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="com.example.moodle.models.HomeAssignment" />
+
     </fragment>
 
     <fragment
@@ -26,7 +62,6 @@
         android:name="com.example.moodle.ui.fragments.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting">
-
     </fragment>
 
 </navigation>

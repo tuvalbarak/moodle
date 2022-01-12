@@ -1,90 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.HomeFragment"
-    android:layout_margin="@dimen/common_layout_margin">
+    android:layout_margin="@dimen/common_medium_margin">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragment_home_tv_welcome_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/title"
-        android:textSize="@dimen/main_title_text_size"
-        />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragment_home_tv_assignments_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/assignments_title"
-        app:layout_constraintTop_toBottomOf="@id/fragment_home_tv_welcome_text"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/title"
-        android:layout_marginTop="@dimen/common_medium_margin"
-        />
-
-    <ImageView
-        android:id="@+id/fragment_home_iv_assignments_filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_filter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/fragment_home_tv_assignments_title"
-        app:layout_constraintBottom_toBottomOf="@id/fragment_home_tv_assignments_title"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragment_home_rv_assignments"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/fragment_home_tv_assignments_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/fragment_home_tv_courses_title"
-        android:layout_marginTop="@dimen/common_small_margin"
-        tools:listitem="@layout/item_assignment"
-        />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragment_home_tv_courses_title"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragment_home_tv_welcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/title"
+            android:textSize="@dimen/main_title_text_size" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragment_home_tv_assignments_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/assignments_title"
+            app:layout_constraintTop_toBottomOf="@id/fragment_home_tv_welcome_text"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/title"
+            android:layout_marginTop="@dimen/common_medium_margin" />
+
+        <ImageView
+            android:id="@+id/fragment_home_iv_assignments_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_filter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/fragment_home_tv_assignments_title"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_home_tv_assignments_title" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_home_rv_assignments"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/fragment_home_tv_assignments_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fragment_home_tv_courses_title"
+            android:layout_marginTop="@dimen/common_small_margin"
+            tools:listitem="@layout/item_horizontal_assignment"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragment_home_tv_courses_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/courses_title"
+            app:layout_constraintTop_toBottomOf="@id/fragment_home_rv_assignments"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/title"
+            android:layout_marginTop="@dimen/common_medium_margin" />
+
+        <ImageView
+            android:id="@+id/fragment_home_iv_courses_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_filter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/fragment_home_tv_courses_title"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_home_tv_courses_title" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_home_rv_courses"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/fragment_home_tv_courses_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/common_small_margin"
+            tools:listitem="@layout/item_course"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fragment_home_fab_new_course_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/courses_title"
-        app:layout_constraintTop_toBottomOf="@id/fragment_home_rv_assignments"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/title"
-        android:layout_marginTop="@dimen/common_medium_margin"
-        />
+        android:layout_marginBottom="@dimen/common_medium_margin"
+        android:layout_marginEnd="@dimen/common_medium_margin"
+        android:backgroundTint="@color/purple_200"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_add" />
 
-    <ImageView
-        android:id="@+id/fragment_home_iv_courses_filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_filter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/fragment_home_tv_courses_title"
-        app:layout_constraintBottom_toBottomOf="@id/fragment_home_tv_courses_title"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragment_home_rv_courses"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/fragment_home_tv_courses_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/common_small_margin"
-        tools:listitem="@layout/item_course"
-
-        />
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,9 +1,6 @@
 package com.example.moodle.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.moodle.models.Course
 import kotlinx.coroutines.flow.Flow
 
@@ -13,12 +10,10 @@ internal interface CourseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCourse(course: Course)
 
-    //@Query("SELECT * FROM favorites ORDER By timeStampAdded DESC")
-    //fun getFavoriteCourses(): Flow<List<Course>>
-
-    @Query("SELECT * FROM Course")
+    @Query("SELECT * FROM Course ORDER BY courseName ASC")
     fun getAllCourses(): Flow<List<Course>>
 
+    @Update
+    fun updateCourse(course: Course)
 
-    //TODO: query for different courses sorting
 }

@@ -1,10 +1,12 @@
 package com.example.moodle.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.moodle.models.Course
+import com.example.moodle.models.HomeAssignment
 import com.example.moodle.repos.CourseRepo
 import com.example.moodle.utils.States
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +20,7 @@ class CourseViewModel(private val courseRepo: CourseRepo, app: Application) : An
     }
 
     val coursesList = MutableLiveData<List<Course>>().apply {
-        postValue(emptyList())
+        getCourseAllCourses()
     }
 
     fun insertCourse(course: Course) {
@@ -29,7 +31,16 @@ class CourseViewModel(private val courseRepo: CourseRepo, app: Application) : An
         }
     }
 
-    fun getCourseAllCourses() {
+    fun updateCourse(course: Course) {
+        viewModelScope.launch(Dispatchers.IO) {
+            Log.d("yoyo", course.toString())
+            state.postValue(States.Loading)
+            courseRepo.updateCourse(course)
+            state.postValue(States.Idle)
+        }
+    }
+
+    private fun getCourseAllCourses() {
        viewModelScope.launch(Dispatchers.IO) {
            state.postValue(States.Loading)
            courseRepo.getAllCourses().collect { list ->
@@ -38,6 +49,4 @@ class CourseViewModel(private val courseRepo: CourseRepo, app: Application) : An
            }
        }
     }
-
-    // TODO: Add logic immpl
 }

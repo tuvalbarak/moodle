@@ -13,6 +13,13 @@
     <string name="assignments_title">Assignments</string>
     <string name="courses_title">Courses</string>
 
+    <!--  CreateOrEditCourse  -->
+    <string name="fragment_add_or_edit_course_name">Course name</string>
+    <string name="fragment_add_or_edit_course_lecturer">Lecturer\'s name</string>
+    <string name="fragment_add_or_edit_course_create">Create</string>
+    <string name="fragment_add_or_edit_course_update">Update</string>
+    <string name="fragment_add_or_edit_course_cancel">Cancel</string>
+
 
 
 </resources>

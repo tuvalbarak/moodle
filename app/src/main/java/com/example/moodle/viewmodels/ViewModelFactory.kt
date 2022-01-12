@@ -18,6 +18,7 @@ object ViewModelFactory {
 private class ViewModelFactoryImpl(val app: Application) : ViewModelProvider.AndroidViewModelFactory(app) {
     override fun <T : ViewModel> create(modelClass: Class<T>): T = when(modelClass) {
         CourseViewModel::class.java -> CourseViewModel(RepoFactory.courseRepo, app) as T
+        AssignmentViewModel::class.java -> AssignmentViewModel(RepoFactory.assignmentRepo, app) as T
         //TODO: add other necessery viewmodel
         else -> throw NotImplementedError(modelClass.toString())
     }

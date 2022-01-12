@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private val navController by lazy {
         (supportFragmentManager.findFragmentById(R.id.ma_fragmentContainer_navHost) as NavHostFragment).navController
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Initializer.init(application) //TODO: Tuval said to do so
@@ -22,12 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         //attach navController to bottom navigation
         ma_bottom_nav.setupWithNavController(navController)
-
     }
 
-//    private fun setCurrentFragment(fragment: Fragment) =
-//        supportFragmentManager.beginTransaction().apply {
-//            replace(R.id.ma_fragmentContainer_navHost, fragment)
-//            commit()
-//        }
 }
