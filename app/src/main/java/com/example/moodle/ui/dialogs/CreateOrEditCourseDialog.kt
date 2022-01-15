@@ -1,4 +1,4 @@
-package com.example.moodle.ui.fragments
+package com.example.moodle.ui.dialogs
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.moodle.R
 import com.example.moodle.models.Course
+import com.example.moodle.models.Semester
 import com.example.moodle.viewmodels.CourseViewModel
 import com.example.moodle.viewmodels.ViewModelFactory
 import kotlinx.android.synthetic.main.dialog_create_or_edit_course.*
@@ -25,18 +26,26 @@ class CreateOrEditCourseDialog: DialogFragment(R.layout.dialog_create_or_edit_co
         super.onViewCreated(view, savedInstanceState)
 
         initUi()
-
     }
 
     private fun initUi() {
-        //take care of edit mode (example in contacts)
+        //take care of edit mode (example in contacts) - currently supporting only create mode
 
         fragment_add_or_create_course_btn_continue.setOnClickListener {
+
+            val semester = when(fragment_add_or_create_course_tid_semester.text.toString().uppercase()) {
+                Semester.A.name -> Semester.A
+                Semester.B.name -> Semester.B
+                Semester.C.name -> Semester.C
+                else -> Semester.UNKNOWN
+            }
+
             val course = Course(
                 courseId = System.currentTimeMillis(),
                 courseName = fragment_add_or_create_course_tid_name.text.toString(),
                 courseLecturer = fragment_add_or_create_course_tid_lecturer.text.toString(),
-                assignments = emptyList()
+                assignments = emptyList(),
+                semester = semester
             )
 
             courseViewModel.insertCourse(course)
@@ -47,5 +56,4 @@ class CreateOrEditCourseDialog: DialogFragment(R.layout.dialog_create_or_edit_co
             dismiss()
         }
     }
-
 }

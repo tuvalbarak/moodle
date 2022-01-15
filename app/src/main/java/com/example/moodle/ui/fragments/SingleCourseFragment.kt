@@ -5,8 +5,11 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.moodle.R
+import com.example.moodle.models.Course
 import com.example.moodle.models.HomeAssignment
+import com.example.moodle.ui.activities.MainActivity
 import com.example.moodle.ui.adapters.HorizontalAssignmentAdapter
 import com.example.moodle.ui.adapters.VerticalAssignmentAdapter
 import com.example.moodle.utils.States
@@ -21,9 +24,7 @@ class SingleCourseFragment : Fragment(R.layout.fragment_single_course) {
         ViewModelProvider(this, ViewModelFactory.create(requireContext())).get(AssignmentViewModel::class.java)
     }
 
-    private val courseViewModel by lazy {
-        ViewModelProvider(this, ViewModelFactory.create(requireContext())).get(CourseViewModel::class.java)
-    }
+    private var currentCourse: Course? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,6 +36,15 @@ class SingleCourseFragment : Fragment(R.layout.fragment_single_course) {
 
     private fun initUi() {
         handleAssignmentsRecycleView()
+        initListeners()
+    }
+
+    private fun initListeners() {
+        fragment_single_course_fab_new_assignment.setOnClickListener {
+            view?.findNavController()?.navigate(
+                SingleCourseFragmentDirections.navGraphActionCreateOrEditAssignment(currentCourse)
+            )
+        }
     }
 
     private fun initObservers() {
@@ -48,8 +58,8 @@ class SingleCourseFragment : Fragment(R.layout.fragment_single_course) {
 
         assignmentViewModel.state.observe(viewLifecycleOwner, { state ->
             when(state) {
-                States.Loading -> {}
-                States.Idle -> {}
+                States.Idle -> (activity as MainActivity).handleProgressBar(false)
+                States.Loading -> (activity as MainActivity).handleProgressBar(true)
                 else -> {}
             }
         })
@@ -57,9 +67,10 @@ class SingleCourseFragment : Fragment(R.layout.fragment_single_course) {
 
     private fun getSafeArgs() {
         arguments?.let {
-            SingleCourseFragmentArgs.fromBundle(it).course?.apply {
-                assignmentViewModel.getAssignmentsById(assignments)
-                fragment_single_course_tv_name.text = courseName
+            SingleCourseFragmentArgs.fromBundle(it).course?.also { course ->
+                currentCourse = course
+                assignmentViewModel.getAssignmentsById(course.assignments)
+                fragment_single_course_tv_name.text = course.courseName
             }
         }
     }

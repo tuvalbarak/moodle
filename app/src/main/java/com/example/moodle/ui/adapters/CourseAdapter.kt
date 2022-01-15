@@ -1,6 +1,5 @@
 package com.example.moodle.ui.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,11 +32,10 @@ class CourseViewHolder(
 ) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(course: Course) {
-        Log.d("baba", "binding")
         itemView.apply {
             item_course_tv_title.text = course.courseName
-            item_course_tv_lecturer.text = course.courseLecturer.toString()
-            item_course_tv_semester.text = "A"
+            item_course_tv_lecturer.text = course.courseLecturer
+            item_course_tv_semester.text = course.semester.name
 
             this.setOnClickListener {
                 onCourseClickListener.invoke(course)

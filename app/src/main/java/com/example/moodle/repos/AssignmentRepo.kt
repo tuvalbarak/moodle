@@ -11,8 +11,6 @@ interface AssignmentRepo {
     suspend fun insertAssignment(assignment: HomeAssignment)
 }
 
-
-
 internal object AssignmentRepoImpl : AssignmentRepo {
     override suspend fun getAllAssignments(): Flow<List<HomeAssignment>> =
         AppDatabase.instance().assignmentDao.getAllAssignments()

@@ -10,8 +10,6 @@ interface CourseRepo {
     suspend fun updateCourse(course: Course)
 }
 
-
-
 internal object CourseRepoImpl : CourseRepo {
     override suspend fun getAllCourses(): Flow<List<Course>> =
         AppDatabase.instance().courseDao.getAllCourses()

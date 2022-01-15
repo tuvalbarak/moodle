@@ -88,14 +88,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fragment_home_fab_new_course_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/common_medium_margin"
-        android:layout_marginEnd="@dimen/common_medium_margin"
         android:backgroundTint="@color/purple_200"
         android:layout_gravity="bottom|end"
-        android:src="@drawable/ic_add" />
+        app:icon="@drawable/ic_add"
+        android:text="Add Course"
+        android:textAllCaps="false" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

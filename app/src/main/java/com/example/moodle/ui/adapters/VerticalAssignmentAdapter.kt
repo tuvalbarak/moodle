@@ -8,14 +8,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moodle.R
-import com.example.moodle.extensions.gone
 import com.example.moodle.models.HomeAssignment
 import kotlinx.android.synthetic.main.item_vertical_assignment.view.*
 
 class VerticalAssignmentAdapter(
     private val onAssignmentClickListener: (assignment: HomeAssignment) -> Unit
 ) : ListAdapter<HomeAssignment, VerticalAssignmentViewHolder>(VerticalAssignmentDiffCallback) {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VerticalAssignmentViewHolder =
         VerticalAssignmentViewHolder(

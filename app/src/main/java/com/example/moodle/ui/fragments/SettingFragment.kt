@@ -9,8 +9,4 @@ import com.example.moodle.R
 
 class SettingFragment : Fragment(R.layout.fragment_setting) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
 }

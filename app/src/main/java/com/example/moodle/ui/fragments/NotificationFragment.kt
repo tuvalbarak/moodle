@@ -9,7 +9,4 @@ import com.example.moodle.R
 
 class NotificationFragment : Fragment(R.layout.fragment_notification) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 }

@@ -27,6 +27,24 @@
         android:label="fragment_single_course"
         tools:layout="@layout/fragment_single_course">
 
+        <action
+            android:id="@+id/navGraph_action_create_or_edit_assignment"
+            app:destination="@id/navGraph_create_or_edit_assignment" />
+
+        <argument
+            android:name="course"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="com.example.moodle.models.Course" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navGraph_create_or_edit_assignment"
+        android:name="com.example.moodle.ui.dialogs.CreateOrEditAssignmentDialog"
+        android:label="dialog_add_or_edit_assignment"
+        tools:layout="@layout/dialog_create_or_edit_assignment">
+
         <argument
             android:name="course"
             app:nullable="true"

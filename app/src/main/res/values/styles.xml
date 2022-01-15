@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--  Titles style  -->
     <style name="title">
         <item name="android:textSize">@dimen/title_text_size</item>
         <item name="android:textColor">@color/black_text_color</item>
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!--  Small titles style  -->
     <style name="small_title">
         <item name="android:textSize">@dimen/large_text_size</item>
         <item name="android:textColor">@color/black_text_color</item>
     </style>
 
+    <!--  Instead of writing the same 4 lines every time - use this style to center and item in the center of the screen  -->
+    <style name="center_item_in_constraint_layout">
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+    </style>
+
+    <!--  Used when using DialogFragment on full screen  -->
     <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
         <item name="android:windowNoTitle">true</item>
         <!-- Set this to true if you want Full Screen without status bar -->
