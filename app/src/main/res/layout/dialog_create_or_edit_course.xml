@@ -7,19 +7,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" >
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_add_or_create_course_til_name"
+        android:id="@+id/dialog_add_or_create_course_til_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/fragment_add_or_edit_course_name"
+        android:hint="@string/dialog_add_or_edit_course_name"
         android:inputType="textCapWords"
         app:endIconDrawable="@drawable/ic_baseline_dashboard_24"
         app:endIconMode="custom">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_add_or_create_course_tid_name"
+            android:id="@+id/dialog_add_or_create_course_tid_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/purple_200"/>
@@ -27,20 +27,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_add_or_create_course_til_lecturer"
+        android:id="@+id/dialog_add_or_create_course_til_lecturer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/fragment_add_or_edit_course_lecturer"
+        android:hint="@string/dialog_add_or_edit_course_lecturer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_add_or_create_course_til_name"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_add_or_create_course_til_name"
         android:layout_marginTop="@dimen/common_small_margin"
         android:inputType="textCapWords"
         app:endIconDrawable="@drawable/ic_baseline_dashboard_24"
         app:endIconMode="custom">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_add_or_create_course_tid_lecturer"
+            android:id="@+id/dialog_add_or_create_course_tid_lecturer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/purple_700"/>
@@ -48,20 +48,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_add_or_create_course_til_semester"
+        android:id="@+id/dialog_add_or_create_course_til_semester"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/fragment_add_or_edit_course_semester"
+        android:hint="@string/dialog_add_or_edit_course_semester"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_add_or_create_course_til_lecturer"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_add_or_create_course_til_lecturer"
         android:layout_marginTop="@dimen/common_small_margin"
         android:inputType="textCapWords"
         app:endIconDrawable="@drawable/ic_baseline_dashboard_24"
         app:endIconMode="custom">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_add_or_create_course_tid_semester"
+            android:id="@+id/dialog_add_or_create_course_tid_semester"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/purple_700"/>
@@ -69,24 +69,24 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/fragment_add_or_create_course_btn_continue"
+        android:id="@+id/dialog_add_or_create_course_btn_continue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/fragment_add_contact_btn_cancel"
-        android:hint="@string/fragment_add_or_edit_course_create"
+        app:layout_constraintBottom_toTopOf="@id/dialog_add_contact_btn_cancel"
+        android:hint="@string/dialog_add_or_edit_course_create"
         android:textColorHint="@color/white"
         android:backgroundTint="@color/primary_color" />
 
     <Button
-        android:id="@+id/fragment_add_contact_btn_cancel"
+        android:id="@+id/dialog_add_contact_btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:hint="@string/fragment_add_or_edit_course_cancel"
+        android:hint="@string/dialog_add_or_edit_course_cancel"
         android:textColorHint="@color/white"
         android:backgroundTint="@color/error_or_delete" />
 

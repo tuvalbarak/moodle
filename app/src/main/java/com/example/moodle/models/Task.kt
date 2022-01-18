@@ -4,11 +4,12 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
+import java.util.Date
 
 interface ITask {
     val id: Long
     val name: String?
-    //    val dueDate: LocalDate
+    val dueDate: Date
     val grade: Int?
     val feedback: String?
     val isGraded: Boolean?
@@ -21,12 +22,12 @@ data class HomeAssignment (
     @PrimaryKey(autoGenerate = true)
     override val id: Long,
     override val name: String?,
-//    override val dueDate: LocalDate,
+    override val dueDate: Date,
     override val grade: Int?,
     override val feedback: String?,
     override val isGraded: Boolean?,
-    override val isSubmitted: Boolean?
-//    val startDate: LocalDate,
+    override val isSubmitted: Boolean?,
+    val givenDate: Date
 ) : ITask, Parcelable
 
 //data class Test(

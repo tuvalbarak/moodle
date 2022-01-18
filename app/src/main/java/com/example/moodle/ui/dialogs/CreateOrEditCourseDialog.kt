@@ -31,9 +31,9 @@ class CreateOrEditCourseDialog: DialogFragment(R.layout.dialog_create_or_edit_co
     private fun initUi() {
         //take care of edit mode (example in contacts) - currently supporting only create mode
 
-        fragment_add_or_create_course_btn_continue.setOnClickListener {
+        dialog_add_or_create_course_btn_continue.setOnClickListener {
 
-            val semester = when(fragment_add_or_create_course_tid_semester.text.toString().uppercase()) {
+            val semester = when(dialog_add_or_create_course_tid_semester.text.toString().uppercase()) {
                 Semester.A.name -> Semester.A
                 Semester.B.name -> Semester.B
                 Semester.C.name -> Semester.C
@@ -42,9 +42,9 @@ class CreateOrEditCourseDialog: DialogFragment(R.layout.dialog_create_or_edit_co
 
             val course = Course(
                 courseId = System.currentTimeMillis(),
-                courseName = fragment_add_or_create_course_tid_name.text.toString(),
-                courseLecturer = fragment_add_or_create_course_tid_lecturer.text.toString(),
-                assignments = emptyList(),
+                courseName = dialog_add_or_create_course_tid_name.text.toString(),
+                courseLecturer = dialog_add_or_create_course_tid_lecturer.text.toString(),
+                assignments = mutableListOf<Long>(),
                 semester = semester
             )
 
@@ -52,7 +52,7 @@ class CreateOrEditCourseDialog: DialogFragment(R.layout.dialog_create_or_edit_co
             dismiss()
         }
 
-        fragment_add_contact_btn_cancel.setOnClickListener {
+        dialog_add_contact_btn_cancel.setOnClickListener {
             dismiss()
         }
     }

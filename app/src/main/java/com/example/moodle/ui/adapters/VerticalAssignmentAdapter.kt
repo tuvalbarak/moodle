@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moodle.R
+import com.example.moodle.extensions.toDateDayMonthAndYear
 import com.example.moodle.models.HomeAssignment
 import kotlinx.android.synthetic.main.item_vertical_assignment.view.*
 
@@ -34,10 +35,11 @@ class VerticalAssignmentViewHolder(
     fun bind(assignment: HomeAssignment) {
         itemView.apply {
 
-
+            val dueDate = "Due Date: " + assignment.dueDate.toDateDayMonthAndYear()
             val grade = "Grade: " + if(assignment.isGraded == true) assignment.grade else "Not graded yet..."
             val feedback = "Feedback: " + if(assignment.isSubmitted == true) assignment.feedback else "No feedback yet..."
 
+            item_vertical_assignment_due_date.text = dueDate
             item_vertical_assignment_grade.text = grade
             item_vertical_assignment_feedback.text = feedback
             item_vertical_assignment_name.text = assignment.name

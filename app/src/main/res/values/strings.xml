@@ -14,11 +14,17 @@
     <string name="courses_title">Courses</string>
 
     <!--  CreateOrEditCourse  -->
-    <string name="fragment_add_or_edit_course_name">Course name</string>
-    <string name="fragment_add_or_edit_course_lecturer">Lecturer\'s name</string>
-    <string name="fragment_add_or_edit_course_semester">A, B or C</string>
-    <string name="fragment_add_or_edit_course_create">Create</string>
-    <string name="fragment_add_or_edit_course_update">Update</string>
-    <string name="fragment_add_or_edit_course_cancel">Cancel</string>
+    <string name="dialog_add_or_edit_course_name">Course name</string>
+    <string name="dialog_add_or_edit_course_lecturer">Lecturer\'s name</string>
+    <string name="dialog_add_or_edit_course_semester">A, B or C</string>
+    <string name="dialog_add_or_edit_course_create">Create</string>
+    <string name="dialog_add_or_edit_course_update">Update</string>
+    <string name="dialog_add_or_edit_course_cancel">Cancel</string>
+
+    <!--  CreateOrEditAssignment  -->
+    <string name="dialog_add_or_edit_assignment_name">Assignment name</string>
+    <string name="dialog_add_or_edit_assignment_create">Create</string>
+    <string name="dialog_add_or_edit_assignment_update">Update</string>
+    <string name="dialog_add_or_edit_assignment_cancel">Cancel</string>
 
 </resources>

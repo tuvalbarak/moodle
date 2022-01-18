@@ -20,6 +20,7 @@ import com.example.moodle.viewmodels.AssignmentViewModel
 import com.example.moodle.viewmodels.CourseViewModel
 import com.example.moodle.viewmodels.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.sql.Date
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -39,9 +40,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         initUi()
         initObservers()
-
-        //mock()
     }
+
     //Mock function to add assignments to a course
     private fun mock() {
         val idList = mutableListOf<Long>()
@@ -98,7 +98,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         courseViewModel.coursesList.observe(viewLifecycleOwner, { courses ->
             Log.d("yoyo", courses.toString())
             this.courses = courses
-//            mock()
+            mock()
             (fragment_home_rv_courses.adapter as CourseAdapter).submitList(courses)
         })
 
@@ -115,7 +115,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         assignmentViewModel.allAssignmentsList.observe(viewLifecycleOwner, { assignments ->
             Log.d("yoyo", assignments.toString())
             this.assignments = assignments
-//            mock()
+            mock()
             (fragment_home_rv_assignments.adapter as HorizontalAssignmentAdapter).submitList(assignments)
         })
 

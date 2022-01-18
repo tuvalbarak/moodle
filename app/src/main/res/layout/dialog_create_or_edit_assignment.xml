@@ -1,14 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="@dimen/common_medium_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dialog_add_or_create_assignment_til_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/dialog_add_or_edit_assignment_name"
+        android:inputType="textCapWords"
+        app:endIconDrawable="@drawable/ic_baseline_dashboard_24"
+        app:endIconMode="custom">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dialog_add_or_create_assignment_tid_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/purple_200"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/dialog_add_or_create_assignment_tv_given_date_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/center_item_in_constraint_layout"
-        android:text="Create or edit assignment"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_add_or_create_assignment_til_name"
+        android:text="Given date:"
+        android:layout_marginTop="@dimen/common_medium_margin"
+        style="@style/small_title" />
+
+    <DatePicker
+        android:id="@+id/dialog_add_or_create_assignment_given_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        app:layout_constraintTop_toBottomOf="@id/dialog_add_or_create_assignment_tv_given_date_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/background_light_grey"
+        android:layout_marginTop="@dimen/common_small_margin" />
+
+    <TextView
+        android:id="@+id/dialog_add_or_create_assignment_tv_due_date_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_add_or_create_assignment_given_date"
+        android:text="Due date:"
+        android:layout_marginTop="@dimen/common_large_margin"
+        style="@style/small_title" />
+
+    <DatePicker
+        android:id="@+id/dialog_add_or_create_assignment_due_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        app:layout_constraintTop_toBottomOf="@id/dialog_add_or_create_assignment_tv_due_date_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/background_light_grey"
+        android:layout_marginTop="@dimen/common_small_margin" />
+
+    <Button
+        android:id="@+id/dialog_add_or_create_assignment_btn_continue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/dialog_add_or_create_assignment_btn_cancel"
+        android:hint="@string/dialog_add_or_edit_assignment_create"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/primary_color" />
+
+    <Button
+        android:id="@+id/dialog_add_or_create_assignment_btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:hint="@string/dialog_add_or_edit_assignment_cancel"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/error_or_delete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

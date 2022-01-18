@@ -14,4 +14,5 @@
     <color name="black_text_color">#FF000000</color>
     <color name="hint">#DEDEDE</color>
     <color name="error_or_delete">#FF2727</color>
+    <color name="background_light_grey">#E8E7E7</color>
 </resources>
