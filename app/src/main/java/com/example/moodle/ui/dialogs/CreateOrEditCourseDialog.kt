@@ -1,12 +1,15 @@
 package com.example.moodle.ui.dialogs
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.moodle.R
 import com.example.moodle.models.Course
 import com.example.moodle.models.Semester
+import com.example.moodle.utils.ProgressBar
+import com.example.moodle.utils.States
 import com.example.moodle.viewmodels.CourseViewModel
 import com.example.moodle.viewmodels.ViewModelFactory
 import kotlinx.android.synthetic.main.dialog_create_or_edit_course.*
@@ -26,6 +29,7 @@ class CreateOrEditCourseDialog: DialogFragment(R.layout.dialog_create_or_edit_co
         super.onViewCreated(view, savedInstanceState)
 
         initUi()
+        initObservers()
     }
 
     private fun initUi() {
@@ -44,7 +48,7 @@ class CreateOrEditCourseDialog: DialogFragment(R.layout.dialog_create_or_edit_co
                 courseId = System.currentTimeMillis(),
                 courseName = dialog_add_or_create_course_tid_name.text.toString(),
                 courseLecturer = dialog_add_or_create_course_tid_lecturer.text.toString(),
-                assignments = mutableListOf<Long>(),
+                assignments = mutableListOf(),
                 semester = semester
             )
 
@@ -55,5 +59,15 @@ class CreateOrEditCourseDialog: DialogFragment(R.layout.dialog_create_or_edit_co
         dialog_add_contact_btn_cancel.setOnClickListener {
             dismiss()
         }
+    }
+
+    private fun initObservers() {
+        courseViewModel.state.observe(viewLifecycleOwner, { state ->
+            when(state) {
+                States.Loading -> ProgressBar.instance().show(context)
+                States.Idle -> ProgressBar.instance().dismiss()
+                else -> ProgressBar.instance().dismiss()
+            }
+        })
     }
 }

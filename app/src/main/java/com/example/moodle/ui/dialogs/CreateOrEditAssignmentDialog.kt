@@ -80,8 +80,8 @@ class CreateOrEditAssignmentDialog : DialogFragment(R.layout.dialog_create_or_ed
                 course.assignments = updatedAssignments
 
                 courseViewModel.updateCourse(course)
+                dismiss()
             }
-            dismiss()
         }
 
         dialog_add_or_create_assignment_btn_cancel.setOnClickListener {
@@ -95,7 +95,6 @@ class CreateOrEditAssignmentDialog : DialogFragment(R.layout.dialog_create_or_ed
                 currentCourse = course
             }
         }
-
     }
 
 }

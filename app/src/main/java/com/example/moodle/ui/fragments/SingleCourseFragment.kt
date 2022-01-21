@@ -4,20 +4,18 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.moodle.R
 import com.example.moodle.models.Course
 import com.example.moodle.models.HomeAssignment
-import com.example.moodle.ui.activities.MainActivity
-import com.example.moodle.ui.adapters.HorizontalAssignmentAdapter
 import com.example.moodle.ui.adapters.VerticalAssignmentAdapter
+import com.example.moodle.utils.ProgressBar
 import com.example.moodle.utils.States
 import com.example.moodle.viewmodels.AssignmentViewModel
-import com.example.moodle.viewmodels.CourseViewModel
 import com.example.moodle.viewmodels.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_single_course.*
+
 
 class SingleCourseFragment : Fragment(R.layout.fragment_single_course) {
 
@@ -51,17 +49,15 @@ class SingleCourseFragment : Fragment(R.layout.fragment_single_course) {
     private fun initObservers() {
 
         assignmentViewModel.currentCourseAssignmentsList.observe(viewLifecycleOwner, { assignments ->
-            (fragment_single_course_rv_assignments.adapter as VerticalAssignmentAdapter).submitList(
-                assignments.sortedByDescending { it.id }
-            )
+            (fragment_single_course_rv_assignments.adapter as VerticalAssignmentAdapter).submitList(assignments)
             Log.d(TAG, assignments.toString())
         })
 
         assignmentViewModel.state.observe(viewLifecycleOwner, { state ->
             when(state) {
-                States.Idle -> (activity as MainActivity).handleProgressBar(false)
-                States.Loading -> (activity as MainActivity).handleProgressBar(true)
-                else -> {}
+                States.Loading -> ProgressBar.instance().show(context)
+                States.Idle -> ProgressBar.instance().dismiss()
+                else -> ProgressBar.instance().dismiss()
             }
         })
     }

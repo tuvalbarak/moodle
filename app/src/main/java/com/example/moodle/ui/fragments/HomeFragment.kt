@@ -7,21 +7,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.moodle.R
-import com.example.moodle.extensions.gone
-import com.example.moodle.extensions.show
-import com.example.moodle.extensions.toDateDayMonthAndYear
 import com.example.moodle.models.Course
 import com.example.moodle.models.HomeAssignment
-import com.example.moodle.ui.activities.MainActivity
 import com.example.moodle.ui.adapters.HorizontalAssignmentAdapter
 import com.example.moodle.ui.adapters.CourseAdapter
 import com.example.moodle.ui.dialogs.CreateOrEditCourseDialog
+import com.example.moodle.utils.ProgressBar
 import com.example.moodle.utils.States
 import com.example.moodle.viewmodels.AssignmentViewModel
 import com.example.moodle.viewmodels.CourseViewModel
 import com.example.moodle.viewmodels.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_home.*
-import java.sql.Date
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -82,9 +78,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         courseViewModel.state.observe(viewLifecycleOwner, { state ->
             when(state) {
-                States.Idle -> (activity as MainActivity).handleProgressBar(false)
-                States.Loading -> (activity as MainActivity).handleProgressBar(true)
-                else -> {}
+                States.Loading -> ProgressBar.instance().show(context)
+                States.Idle -> ProgressBar.instance().dismiss()
+                else -> ProgressBar.instance().dismiss()
             }
         })
     }
@@ -96,9 +92,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         assignmentViewModel.state.observe(viewLifecycleOwner, { state ->
             when(state) {
-                States.Idle -> (activity as MainActivity).handleProgressBar(false)
-                States.Loading -> (activity as MainActivity).handleProgressBar(true)
-                else -> {}
+                States.Loading -> ProgressBar.instance().show(context)
+                States.Idle -> ProgressBar.instance().dismiss()
+                else -> ProgressBar.instance().dismiss()
             }
         })
     }

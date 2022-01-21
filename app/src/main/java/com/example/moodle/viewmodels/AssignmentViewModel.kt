@@ -44,7 +44,10 @@ class AssignmentViewModel(private val assignmentRepo: AssignmentRepo, app: Appli
             assignmentIds.forEach {
                 tempList.add(assignmentRepo.getAssignmentById(it))
             }
-            currentCourseAssignmentsList.postValue(tempList)
+
+            currentCourseAssignmentsList.postValue(
+                tempList.sortedByDescending { it.id }
+            )
             state.postValue(States.Idle)
         }
     }
