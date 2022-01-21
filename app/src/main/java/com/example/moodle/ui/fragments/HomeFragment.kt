@@ -1,8 +1,10 @@
 package com.example.moodle.ui.fragments
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
+import androidx.core.os.HandlerCompat.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -92,8 +94,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         assignmentViewModel.state.observe(viewLifecycleOwner, { state ->
             when(state) {
-                States.Loading -> ProgressBar.instance().show(context)
-                States.Idle -> ProgressBar.instance().dismiss()
+                States.Loading -> {}
+                States.Idle -> {}
                 else -> ProgressBar.instance().dismiss()
             }
         })

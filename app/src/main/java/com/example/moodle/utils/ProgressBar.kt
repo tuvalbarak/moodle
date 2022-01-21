@@ -2,7 +2,6 @@ package com.example.moodle.utils
 
 import android.app.Dialog
 import android.content.Context
-import android.view.Window
 import com.example.moodle.R
 
 
@@ -11,21 +10,22 @@ class ProgressBar {
     private var dialog: Dialog? = null
 
     fun show(context: Context?) {
-
-        if (dialog != null && dialog?.isShowing == true) {
-            return
+        if (dialog == null || dialog?.isShowing == false) {
+            context?.let {
+                dialog = Dialog(context).apply {
+                    setContentView(R.layout.progressbar)
+                    window?.setBackgroundDrawableResource(android.R.color.transparent)
+                    show()
+                }
+            }
         }
-
-        dialog = Dialog(context!!)
-        dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog?.setContentView(R.layout.progressbar)
-        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        dialog?.show()
     }
 
     fun dismiss() {
-        if (dialog != null && dialog?.isShowing == true) {
-            dialog?.dismiss()
+        dialog?.apply {
+            if (isShowing) {
+                dismiss()
+            }
         }
     }
 
