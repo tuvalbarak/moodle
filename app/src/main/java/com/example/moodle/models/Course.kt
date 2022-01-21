@@ -25,7 +25,7 @@ data class Course(
     override val courseId: Long,
     override val courseName: String,
     override val courseLecturer: String,
-    var assignments: MutableList<Long> = mutableListOf(),
+    var assignments: MutableList<Long>,
     val semester: Semester
 
 ) : ICourse, Parcelable

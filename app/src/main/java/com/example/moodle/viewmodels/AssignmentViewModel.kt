@@ -18,7 +18,13 @@ class AssignmentViewModel(private val assignmentRepo: AssignmentRepo, app: Appli
     }
 
     val allAssignmentsList = MutableLiveData<List<HomeAssignment>>().apply {
-        getAllAssignments()
+        viewModelScope.launch(Dispatchers.IO) {
+            state.postValue(States.Loading)
+            assignmentRepo.getAllAssignments().collect { list ->
+                postValue(list)
+                state.postValue(States.Idle)
+            }
+        }
     }
 
     val currentCourseAssignmentsList = MutableLiveData<List<HomeAssignment>>()
@@ -43,13 +49,4 @@ class AssignmentViewModel(private val assignmentRepo: AssignmentRepo, app: Appli
         }
     }
 
-    private fun getAllAssignments(){
-        viewModelScope.launch(Dispatchers.IO) {
-            state.postValue(States.Loading)
-            assignmentRepo.getAllAssignments().collect { list ->
-                allAssignmentsList.postValue(list)
-                state.postValue(States.Idle)
-            }
-        }
-    }
 }

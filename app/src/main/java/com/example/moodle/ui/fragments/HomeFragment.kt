@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import com.example.moodle.R
 import com.example.moodle.extensions.gone
 import com.example.moodle.extensions.show
+import com.example.moodle.extensions.toDateDayMonthAndYear
 import com.example.moodle.models.Course
 import com.example.moodle.models.HomeAssignment
 import com.example.moodle.ui.activities.MainActivity
@@ -32,31 +33,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         ViewModelProvider(this, ViewModelFactory.create(requireContext())).get(AssignmentViewModel::class.java)
     }
 
-    var courses: List<Course>? = null
-    var assignments: List<HomeAssignment>? = null
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initUi()
         initObservers()
-    }
-
-    //Mock function to add assignments to a course
-    private fun mock() {
-        val idList = mutableListOf<Long>()
-        assignments?.forEach {
-            idList.add(it.id)
-        }
-       courses?.get(0)?.assignments = idList
-
-        courses?.let { courses ->
-            assignments?.let {
-                courseViewModel.updateCourse(courses[0])
-            }
-        }
-
-        Log.d(TAG, courses?.get(0)?.assignments.toString())
     }
 
     private fun initUi() {
@@ -96,9 +77,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun courseObservers() {
         courseViewModel.coursesList.observe(viewLifecycleOwner, { courses ->
-            Log.d("yoyo", courses.toString())
-            this.courses = courses
-            mock()
             (fragment_home_rv_courses.adapter as CourseAdapter).submitList(courses)
         })
 
@@ -113,9 +91,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun assignmentObservers() {
         assignmentViewModel.allAssignmentsList.observe(viewLifecycleOwner, { assignments ->
-            Log.d("yoyo", assignments.toString())
-            this.assignments = assignments
-            mock()
             (fragment_home_rv_assignments.adapter as HorizontalAssignmentAdapter).submitList(assignments)
         })
 

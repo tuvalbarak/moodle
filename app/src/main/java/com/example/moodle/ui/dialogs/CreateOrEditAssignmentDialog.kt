@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.moodle.R
+import com.example.moodle.extensions.toDateDayMonthAndYear
 import com.example.moodle.models.Course
 import com.example.moodle.models.HomeAssignment
 import com.example.moodle.viewmodels.AssignmentViewModel
@@ -42,32 +43,44 @@ class CreateOrEditAssignmentDialog : DialogFragment(R.layout.dialog_create_or_ed
 
         dialog_add_or_create_assignment_btn_continue.setOnClickListener {
             //TODO - look for a proper replacement for deprecated Date constructor
+
+            val givenDate = Calendar.getInstance().apply {
+                set(Calendar.YEAR, dialog_add_or_create_assignment_given_date.year)
+                set(Calendar.DAY_OF_MONTH, dialog_add_or_create_assignment_given_date.dayOfMonth)
+                set(Calendar.MONTH, dialog_add_or_create_assignment_given_date.month)
+                set(Calendar.HOUR, 0)
+                set(Calendar.MINUTE, 0)
+            }.time
+
+            val dueDate = Calendar.getInstance().apply {
+                set(Calendar.YEAR, dialog_add_or_create_assignment_due_date.year)
+                set(Calendar.DAY_OF_MONTH, dialog_add_or_create_assignment_due_date.dayOfMonth)
+                set(Calendar.MONTH, dialog_add_or_create_assignment_due_date.month)
+                set(Calendar.HOUR, 0)
+                set(Calendar.MINUTE, 0)
+            }.time
+
             val assignment = HomeAssignment(
                 id = System.currentTimeMillis(),
                 name = dialog_add_or_create_assignment_tid_name.text.toString(),
-                dueDate = Date(
-                    dialog_add_or_create_assignment_due_date.year,
-                    dialog_add_or_create_assignment_due_date.month + 1,
-                    dialog_add_or_create_assignment_due_date.dayOfMonth
-                ),
+                dueDate = dueDate,
                 grade = -1,
                 feedback = "",
                 isGraded = false,
                 isSubmitted = false,
-                givenDate = Date(
-                    dialog_add_or_create_assignment_given_date.year,
-                    dialog_add_or_create_assignment_given_date.month + 1,
-                    dialog_add_or_create_assignment_given_date.dayOfMonth
-                )
+                givenDate = givenDate
             )
 
             assignmentViewModel.insertAssignment(assignment)
 
             currentCourse?.let { course ->
-//                course.assignments.add(assignment.id)
-//                courseViewModel.updateCourse(course)
-            }
+                val updatedAssignments = mutableListOf<Long>()
+                updatedAssignments.addAll(course.assignments)
+                updatedAssignments.add(assignment.id)
+                course.assignments = updatedAssignments
 
+                courseViewModel.updateCourse(course)
+            }
             dismiss()
         }
 
@@ -84,4 +97,5 @@ class CreateOrEditAssignmentDialog : DialogFragment(R.layout.dialog_create_or_ed
         }
 
     }
+
 }

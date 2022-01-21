@@ -12,17 +12,24 @@ import com.example.moodle.utils.States
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.collect
-
 class CourseViewModel(private val courseRepo: CourseRepo, app: Application) : AndroidViewModel(app){
     //holds the state of the app
     val state = MutableLiveData<States>().apply {
         postValue(States.Idle)
     }
 
+    //Current courses list
     val coursesList = MutableLiveData<List<Course>>().apply {
-        getCourseAllCourses()
+        viewModelScope.launch(Dispatchers.IO) {
+            state.postValue(States.Loading)
+            courseRepo.getAllCourses().collect { list ->
+                postValue(list)
+                state.postValue(States.Idle)
+            }
+        }
     }
 
+    //Inserting a new course
     fun insertCourse(course: Course) {
         viewModelScope.launch(Dispatchers.IO) {
             state.postValue(States.Loading)
@@ -31,22 +38,14 @@ class CourseViewModel(private val courseRepo: CourseRepo, app: Application) : An
         }
     }
 
+    //Updating an already existing course
     fun updateCourse(course: Course) {
         viewModelScope.launch(Dispatchers.IO) {
-            Log.d("yoyo", course.toString())
             state.postValue(States.Loading)
             courseRepo.updateCourse(course)
             state.postValue(States.Idle)
         }
     }
 
-    private fun getCourseAllCourses() {
-       viewModelScope.launch(Dispatchers.IO) {
-           state.postValue(States.Loading)
-           courseRepo.getAllCourses().collect { list ->
-               coursesList.postValue(list)
-               state.postValue(States.Idle)
-           }
-       }
-    }
 }
+

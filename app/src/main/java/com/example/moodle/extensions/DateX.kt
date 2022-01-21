@@ -6,6 +6,6 @@ import java.util.Locale
 
 fun Date?.toDateDayMonthAndYear():String =
     this?.let {
-        SimpleDateFormat("dd MMM, yyy", Locale.ROOT).format(it.time) ?: ""
+        SimpleDateFormat("MMM dd, yyy", Locale.ROOT).format(it.time) ?: ""
     } ?: ""
 
