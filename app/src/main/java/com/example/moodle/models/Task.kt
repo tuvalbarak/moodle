@@ -27,7 +27,6 @@ data class HomeAssignment (
     override val feedback: String?,
     override val isGraded: Boolean?,
     override val isSubmitted: Boolean?,
-    val givenDate: Date
 ) : ITask, Parcelable
 
 //data class Test(

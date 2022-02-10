@@ -26,34 +26,34 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/dialog_add_or_create_assignment_tv_given_date_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dialog_add_or_create_assignment_til_name"
-        android:text="Given date:"
-        android:layout_marginTop="@dimen/common_medium_margin"
-        style="@style/small_title" />
+<!--    <TextView-->
+<!--        android:id="@+id/dialog_add_or_create_assignment_tv_given_date_title"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/dialog_add_or_create_assignment_til_name"-->
+<!--        android:text="Given date:"-->
+<!--        android:layout_marginTop="@dimen/common_medium_margin"-->
+<!--        style="@style/small_title" />-->
 
-    <DatePicker
-        android:id="@+id/dialog_add_or_create_assignment_given_date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:datePickerMode="spinner"
-        android:calendarViewShown="false"
-        app:layout_constraintTop_toBottomOf="@id/dialog_add_or_create_assignment_tv_given_date_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/background_light_grey"
-        android:layout_marginTop="@dimen/common_small_margin" />
+<!--    <DatePicker-->
+<!--        android:id="@+id/dialog_add_or_create_assignment_given_date"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:datePickerMode="spinner"-->
+<!--        android:calendarViewShown="false"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/dialog_add_or_create_assignment_tv_given_date_title"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:background="@color/background_light_grey"-->
+<!--        android:layout_marginTop="@dimen/common_small_margin" />-->
 
     <TextView
         android:id="@+id/dialog_add_or_create_assignment_tv_due_date_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dialog_add_or_create_assignment_given_date"
+        app:layout_constraintTop_toBottomOf="@id/dialog_add_or_create_assignment_til_name"
         android:text="Due date:"
         android:layout_marginTop="@dimen/common_large_margin"
         style="@style/small_title" />

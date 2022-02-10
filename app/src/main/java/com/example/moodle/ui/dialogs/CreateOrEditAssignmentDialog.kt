@@ -42,15 +42,14 @@ class CreateOrEditAssignmentDialog : DialogFragment(R.layout.dialog_create_or_ed
     private fun initUi() {
 
         dialog_add_or_create_assignment_btn_continue.setOnClickListener {
-            //TODO - look for a proper replacement for deprecated Date constructor
 
-            val givenDate = Calendar.getInstance().apply {
-                set(Calendar.YEAR, dialog_add_or_create_assignment_given_date.year)
-                set(Calendar.DAY_OF_MONTH, dialog_add_or_create_assignment_given_date.dayOfMonth)
-                set(Calendar.MONTH, dialog_add_or_create_assignment_given_date.month)
-                set(Calendar.HOUR, 0)
-                set(Calendar.MINUTE, 0)
-            }.time
+//            val givenDate = Calendar.getInstance().apply {
+//                set(Calendar.YEAR, dialog_add_or_create_assignment_given_date.year)
+//                set(Calendar.DAY_OF_MONTH, dialog_add_or_create_assignment_given_date.dayOfMonth)
+//                set(Calendar.MONTH, dialog_add_or_create_assignment_given_date.month)
+//                set(Calendar.HOUR, 0)
+//                set(Calendar.MINUTE, 0)
+//            }.time
 
             val dueDate = Calendar.getInstance().apply {
                 set(Calendar.YEAR, dialog_add_or_create_assignment_due_date.year)
@@ -68,7 +67,6 @@ class CreateOrEditAssignmentDialog : DialogFragment(R.layout.dialog_create_or_ed
                 feedback = "",
                 isGraded = false,
                 isSubmitted = false,
-                givenDate = givenDate
             )
 
             assignmentViewModel.insertAssignment(assignment)
