@@ -3,17 +3,16 @@
     <item
         android:id="@+id/navGraph_fragment_home"
         android:title="@string/home_fragment"
-        android:icon="@drawable/ic_launcher_background"
-    />
+        android:icon="@drawable/ic_baseline_home_24" />
     <item
         android:id="@+id/navGraph_fragment_notification"
         android:title="@string/notification_fragment"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_baseline_notifications_24"
     />
     <item
         android:id="@+id/navGraph_fragment_setting"
         android:title="@string/setting_fragment"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_baseline_settings_24"
     />
 
 

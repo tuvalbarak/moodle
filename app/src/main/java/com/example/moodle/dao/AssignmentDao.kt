@@ -22,5 +22,4 @@ internal interface AssignmentDao {
     @Query("SELECT * FROM HomeAssignment WHERE id LIKE :assignmentId ORDER BY name ASC")
     fun getAssignmentById(assignmentId: Long): HomeAssignment
 
-
 }

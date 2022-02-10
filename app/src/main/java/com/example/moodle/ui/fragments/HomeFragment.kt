@@ -27,6 +27,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         ViewModelProvider(this, ViewModelFactory.create(requireContext())).get(CourseViewModel::class.java)
     }
 
+
     private val assignmentViewModel by lazy {
         ViewModelProvider(this, ViewModelFactory.create(requireContext())).get(AssignmentViewModel::class.java)
     }
