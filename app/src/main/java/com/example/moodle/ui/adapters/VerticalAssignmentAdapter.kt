@@ -36,8 +36,14 @@ class VerticalAssignmentViewHolder(
     fun bind(assignment: HomeAssignment) {
         itemView.apply {
 
+            var grade = "Grade: "
             val dueDate = "Due Date: " + assignment.dueDate.toDateDayMonthAndYear()
-            val grade = "Grade: " + if(assignment.isGraded == true) assignment.grade else "Not graded yet..."
+            if(assignment.isGraded == true) {
+                grade += if(assignment.grade == -1) "Not graded yet..." else assignment.grade
+            } else {
+                grade += "Not graded yet..."
+            }
+//            val grade = "Grade: " + if(assignment.isGraded == true) assignment.grade else "Not graded yet..."
             val feedback = "Feedback: " + if(assignment.isSubmitted == true) assignment.feedback else "No feedback yet..."
 
             item_vertical_assignment_due_date.text = dueDate

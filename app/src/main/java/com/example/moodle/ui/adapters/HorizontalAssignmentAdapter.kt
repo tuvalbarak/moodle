@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moodle.R
+import com.example.moodle.extensions.toDateDayMonthAndYear
 import com.example.moodle.models.HomeAssignment
 import kotlinx.android.synthetic.main.item_horizontal_assignment.view.*
 
@@ -34,7 +35,15 @@ class HorizontalAssignmentViewHolder(
     fun bind(assignment: HomeAssignment) {
         itemView.apply {
             item_horizontal_assignment_tv_name.text = assignment.name
-            item_horizontal_assignment_tv_grade.text = (assignment.grade ?: 100).toString()
+
+            var grade = "Grade: "
+            if(assignment.isGraded == true) {
+                grade += if(assignment.grade == -1) "Not graded yet..." else assignment.grade
+            } else {
+                grade += "Not graded yet..."
+            }
+
+            item_horizontal_assignment_tv_grade.text = grade
 
             this.setOnClickListener {
                 onAssignmentClickListener.invoke(assignment)
